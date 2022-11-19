@@ -1,0 +1,62 @@
+{% extends 'characters/base.html' %}
+{% load static %}
+
+
+<body>
+
+    <form action={% url "personajeAdd" %} method="post">
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <label for="CharacterID" class="form-label">ID</label> <br>
+                    <input type="text" name="characterID" value="{{Personaje.characterID}}" class="form-control" readonly> <br>
+
+                    <label for="nombre">Nombre</label><br>
+                    <input type="text" name="nombre" value="{{Personaje.nombre}}" class="form-control"> <br>
+
+                    <label for="edad">Edad</label><br>
+                    <input type="number" name="edad" value="{{Personaje.edad}}" class="form-control"><br>
+
+                    <label for="alturas" class="form-label">Altura</label>
+                    <input type="number" name="altura" value="{{Personaje.altura}}"class="form-control"><br>
+
+                    <label for="region" class="form-label">Region</label>
+                    <input type="text" name="region" value="{{Personaje.region}}"class="form-control"><br>
+
+                    <label for="vision" class="form-label">Visión</label>
+                    <input type="text" name="vision" value="{{Personaje.vision}}"class="form-control"><br>
+
+                    <label for="jugable" class="form-label">¿Es Jugable?</label>
+                    <input type="text" name="jugable" value="{{Personaje.jugable}}"class="form-control"><br>
+
+                    <label for="afiliacion" class="form-label">Afiliación</label>
+                    <input type="text" name="afiliacion" value="{{Personaje.afiliacion}}"class="form-control"><br>
+
+                    <label for="cumpleaños" class="form-label">Cumpleaños</label>
+                    <input type="text" name="cumpleaños" value="{{Personaje.cumpleaños}}"class="form-control"><br>
+
+                    <label for="constelacion" class="form-label">Constelación</label>
+                    <input type="text" name="constelacion" value="{{Personaje.constelacion}}"class="form-control"><br>
+
+                    <button type="submit" class="btn btn-primary" name="opcion" value="Actualizar">Actualizar</button>
+                    <button type="submit" class="btn btn-primary" name="opcion" value="Editar">Editar</button>
+    </form>
+    
+    <div id="idMensajes">
+
+        {%if mensaje %}
+
+            {{mensaje}}
+        {%endif%}
+    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+</body>
+</html>

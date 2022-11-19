@@ -1,0 +1,31 @@
+{% extends 'characters/base.html' %}
+
+
+<body>
+  {% block content %}
+
+  <form action="loginData" method="POST">
+      {% csrf_token %}
+      <div class="container">
+          <div class="row">
+              <div class="mb-3">
+                  <label for="us" class="form-label">Usuario</label>
+                  <input type="text" class="form-control" name="usuario" required>
+                  <br>
+                  <label for="pass" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" name="contraseña" requiered>
+                  <br>
+                  <br>
+
+                  <button type="submit" class="btn btn-primary" name="opcion" value="Ingresar">Ingresar</button>
+                </div>
+  
+  
+          </div>
+      </div>
+  
+
+  </form>
+
+  {% endblock %}
+</body>

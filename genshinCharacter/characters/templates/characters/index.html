@@ -1,9 +1,16 @@
 {% extends 'characters/base.html' %}
 
+{% load static %}
 
-{%block content %}
-hola
-{%endblock%}
-    
+<body>
+    {% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
     
 
+    <h2>Hola</h2>
+    <img src="{% static '/media/fotos/Genshin_Impact_logo.svg' %}" alt="My image">
+    {% endblock %}
+</body>

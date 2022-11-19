@@ -3,14 +3,14 @@ from .models import Personaje
 
 # Create your views here.
 
-Usuarios=[]
-Contraseñas=[]
+Usuarios=["admin, Gioro"]
+Contraseñas=["admin,123"]
 
 def login(request):
     print("Login")
     context={}
 
-    return render(request, "characters.login.html", context)
+    return render(request, "characters/login.html", context)
 
 
 def loginData(request):
@@ -49,6 +49,11 @@ def index(request):
     context={}
     return render(request, 'characters/index.html', context)
 
+def quienesSomos(request):
+    print("QuienesSomos")
+    context={}
+    return render(request, 'characters/quienesSomos.html', context)
+
 
 def colaborador(request):
     print("Se esta en la colaboración")
@@ -75,7 +80,6 @@ def personajeAdd(request):
         #Agregar
 
         if opcion=="Agregar":
-            characterID=request.POST["characterID"]
             nombre=request.POST["nombre"]
             cumpleaños=request.POST["cumpleaños"]
             edad=request.POST["edad"]
@@ -87,10 +91,9 @@ def personajeAdd(request):
             foto=request.FILES["foto"] 
 
 
-            if characterID!= "" and region!="" and vision !="" and constelacion!="":
+            if region!="" and vision !="" and constelacion!="":
 
                 personaje=Personaje()
-                personaje.characterID=characterID
                 personaje.nombre=nombre
                 personaje.cumpleaños=cumpleaños
                 personaje.edad=edad
@@ -112,8 +115,6 @@ def personajeAdd(request):
 
         if opcion=="Actualizar":
             id=request.POST["id_personaje"]
-            characterID=request.POST["characterID"]
-            print("CharacterID= ", characterID)
             nombre=request.POST["nombre"]
             cumpleaños=request.POST["cumpleaños"]
             print("Cumpleaños= ", cumpleaños)
@@ -125,8 +126,8 @@ def personajeAdd(request):
             genero=request.POST["genero"]
             foto=request.FILES.get("foto", False)
 
-            if characterID!= "" and region!="" and vision !="" and constelacion!="":
-                personaje=Personaje(id, characterID,nombre, cumpleaños, edad, region, vision, afiliacion, constelacion, genero, foto)
+            if region!="" and vision !="" and constelacion!="":
+                personaje=Personaje(id,nombre, cumpleaños, edad, region, vision, afiliacion, constelacion, genero, foto)
 
                 personaje.save()
 
@@ -186,6 +187,15 @@ def personaje_del(request, pk):
         return render(request, 'characters/listarPersonaje.html', context)
 
 
+def listarPersonaje(request):
+    print("Listar")
+    context={}
+
+    return render(request, "characters/listarPersonaje.html", context)
 
 
+def personajes(request):
+    print("Personajes")
+    context={}
 
+    return render(request, "characters/personajes.html",context)

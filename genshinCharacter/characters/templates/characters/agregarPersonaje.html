@@ -1,1 +1,52 @@
 {% extends 'characters/base.html' %}
+
+<body>
+
+    <br>
+    <br>
+    <br>
+    {% block content %}
+
+    
+
+    <form action="personajeAdd" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <label for="nombre">Nombre</label><br>
+                    <input type="text" name="Personaje.nombre" class="form-control"> <br>
+
+                    <label for="edad">Edad</label><br>
+                    <input type="number" name="Personaje.edad"  class="form-control"><br>
+
+                    <label for="region" class="form-label">Region</label>
+                    <input type="text" name="Personaje.region" class="form-control"><br>
+
+                    <label for="vision" class="form-label">Visión</label>
+                    <input type="text" name="Personaje.vision" class="form-control"><br>
+
+                    <label for="afiliacion" class="form-label">Afiliación</label>
+                    <input type="text" name="Personaje.afiliacion" class="form-control"><br>
+
+                    <label for="cumpleaños" class="form-label">Cumpleaños</label>
+                    <input type="date" name="Personaje.cumpleaños" class="form-control"><br>
+
+                    <label for="constelacion" class="form-label">Constelación</label>
+                    <input type="text" name="Personaje.constelacion" class="form-control"><br>
+
+                    <button type="submit" class="btn btn-primary" name="opcion" value="Agregar">Agregar</button>
+                    <button type="submit" class="btn btn-primary" name="opcion" value="Editar">Editar</button>
+    </form>
+    <div id="idMensajes">
+
+        {%if mensaje %}
+
+            {{mensaje}}
+        {%endif%}
+    </div>
+
+    {% endblock %}
+</body>
+</html>
