@@ -1,0 +1,38 @@
+{% extends 'characters/base.html' %}
+
+<body>
+
+    <br>
+    <br>
+    <br>
+    {% block content %}
+
+    <form action="agregarUsuario" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <label for="usuario">Usuario</label><br>
+                    <input type="text" name="nombre" class="form-control"> <br>
+
+                    <label for="contraseña" class="form-label">Contraseña</label>
+                    <input type="date" name="cumpleaños" class="form-control"><br>
+
+                </form>
+                <div id="idMensajes">
+            
+                    {%if mensaje %}
+            
+                        {{mensaje}}
+                    {%endif%}
+                </div>
+            
+                {% endblock %}
+            </body>
+            </html>
+
+
+
+
+</body>

@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from .models import Personaje
+from .models import Personaje, Usuario
+from datetime import datetime
 
 # Create your views here.
 
-Usuarios=["admin, Gioro"]
-Contraseñas=["admin,123"]
 
 def login(request):
     print("Login")
@@ -15,6 +14,8 @@ def login(request):
 
 def loginData(request):
     print("Login")
+    Usuarios=["admin, Gioro"]
+    Contraseñas=["admin,123"]
 
     if request.method=="POST":
         print("Post")
@@ -28,12 +29,11 @@ def loginData(request):
             contraseña=request.POST["contraseña"]
 
             if usuario in Usuarios and contraseña in Contraseñas:
+
                 print("Validado")
                 context={"usuario":usuario, "contraseña": contraseña}
 
-                return render(request, "characters/index.html", context)
-
-    
+                return render(request, "characters/quienesSomos.html", context)
             else:
                 print("No validado")
                 context={}
@@ -61,7 +61,14 @@ def colaborador(request):
     return render (request, 'characters/colaboradores.html', context)
 
 
-def personajeAdd(request):
+def crud_personajes(request):
+
+    print("hola  estoy en crud_alumnes...")
+    personajes = Personaje.objects.all()  #select * from Alumne
+    context = {'personajes': personajes}
+    return render(request, 'characters/agregarPersonaje.html', context)
+
+def agregarPersonaje(request):
     print("Estoy en agregar personaje")
     context={}
     if request.method=="POST":
@@ -94,8 +101,9 @@ def personajeAdd(request):
             if region!="" and vision !="" and constelacion!="":
 
                 personaje=Personaje()
+
                 personaje.nombre=nombre
-                personaje.cumpleaños=cumpleaños
+                personaje.fecha_cumpleaños=cumpleaños
                 personaje.edad=edad
                 personaje.region=region
                 personaje.vision=vision
@@ -114,7 +122,6 @@ def personajeAdd(request):
         #Actualizar
 
         if opcion=="Actualizar":
-            id=request.POST["id_personaje"]
             nombre=request.POST["nombre"]
             cumpleaños=request.POST["cumpleaños"]
             print("Cumpleaños= ", cumpleaños)
@@ -127,7 +134,7 @@ def personajeAdd(request):
             foto=request.FILES.get("foto", False)
 
             if region!="" and vision !="" and constelacion!="":
-                personaje=Personaje(id,nombre, cumpleaños, edad, region, vision, afiliacion, constelacion, genero, foto)
+                personaje=Personaje(nombre, cumpleaños, edad, region, vision, afiliacion, constelacion, genero, foto)
 
                 personaje.save()
 
@@ -157,7 +164,7 @@ def personaje_edit(request, pk):
 
         context={'personaje': personaje, 'mensajes' : mensajes, 'errores' : errores}
 
-        return render(request, 'characters/editarPersonajes.html', context)
+        return render(request, 'characters/editarPersonaje.html', context)
 
     return render(request, 'characters/listarPersonaje.html', context)
 
@@ -188,14 +195,53 @@ def personaje_del(request, pk):
 
 
 def listarPersonaje(request):
-    print("Listar")
-    context={}
+    print("hola  estoy en personaje...")
+    personajes = Personaje.objects.all()  
+    context = {'personaje': personajes}
+    return render(request, 'characters/listarPersonaje.html', context)
 
-    return render(request, "characters/listarPersonaje.html", context)
 
-
-def personajes(request):
-    print("Personajes")
-    context={}
-
+def personajes(request): 
+    print("hola  estoy en personaje...")
+    personajes = Personaje.objects.all()  
+    context = {'personaje': personajes}
     return render(request, "characters/personajes.html",context)
+
+def administracion(request):
+    print("Adminisración")
+    context={}
+    return render(request, 'characters/administracion.html', context)
+
+    
+def agregarUsuario(request):
+    print("Estoy en agregar personaje")
+    context={}
+    if request.method=="POST":
+        print("Post")
+        opcion=request.POST.get("opcion", "")
+        print("opcion="+opcion)
+
+
+        if opcion=="Agregar":
+            nombre=request.POST["nombre"]
+            contraseña=request.POST["contraseña"]
+
+
+            if nombre!="" and contraseña!="":
+                usuario=Usuario
+
+
+                usuario.nombre=nombre
+                usuario.contraseña=contraseña
+
+
+                usuario.save()
+
+                context={'mensaje': "Guardado"}
+
+            else:
+                context={'mensaje': "Error, no se pudo guardar, los datos estan vacios"}
+
+
+        return render(request, "characters/crearUsuario.html", context)
+

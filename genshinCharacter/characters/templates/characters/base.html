@@ -33,13 +33,13 @@
 <body>
 
   <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="quienesSomos">¿Quienes Somos?</a>
+    <a class="navbar-brand" href="{%url 'quienesSomos'%}">¿Quienes Somos?</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="personajes">Personajes</a>
+    <a class="navbar-brand" href="{%url 'personajes'%}">Mis productos</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -55,12 +55,25 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
+        Mantenedores
+      </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="#">Persona</a>
+      <a class="dropdown-item" href="{% url 'crud_personajes' %}">Personajes</a>
+      <div class="dropdown-divider"></div>
+      </div>
+  </li>
+
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         admin
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Menú principal</a>
+        <a class="dropdown-item" href="{%url 'index'%}">Menú principal</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Cerrar sessión</a>
+        <a class="dropdown-item" href="{%url 'index'">Cerrar sessión</a>
       </div>
     </li>
 

@@ -9,47 +9,39 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-ms-4">
                 <table class="table" align="left">
-                        {%if personajes %}
+                        {%if personaje %}
                 
                         <thead>
                         <tr>
-                        <th scope="col">Foto</th>
-                        <th scope="col">CharacterID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Altura</th>
-                        <th scope="col">Region</th>
-                        <th scope="col">Visión</th>
-                        <th scope="col">Afiliación</th>
-                        <th scope="col">Cumpleaños</th>
-                        <th scope="col">Constelación</th>
-                        <th scope="col">Modificar</th>
-                        <th scope="col">Eliminar</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cumpleaños</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Visión</th>
+                            <th scope="col">Afiliación</th>
+                            <th scope="col">Constelación</th>
+                            <th scope="col">Genero</th>
                         </thead>
 
                 
-                        {% for x in personajes %}
+                        {% for x in personaje %}
                 
 
                         <tbody>
                             <tr>
-                                <td> {{x.photo}}</td>
-                                <td> {{x.characterID}}
-                                <td> {{x.nombre}}
-                                <td> {{x.edad}}
-                                <td> {{x.altura}}
-                                <td> {{x.region}}
-                                <td> {{x.vision}}
-                                <td> {{x.jugable}}
-                                <td> {{x.afiliacion}}
-                                <td> {{x.cumpleaños}}
-                                <td> {{x.constelacion}}</td>
+                                <td> {{x.foto}}</td>
+                                <td> {{x.nombre}}</th>
+                                <td> {{x.cumpleaños}}</th>
+                                <td> {{x.edad}}</th>
+                                <td> {{x.region}}</th>
+                                <td> {{x.vision}}</th>
+                                <td> {{x.afiliacion}}</th>
+                                <td> {{x.constelacion}}</th>
+                                <td> {{x.genero}}</th>
                         
                             
-                
-                                <td> <a href="{% url 'characters_del' pk=x.characterID %}">Eliminar</a>
-                                <td> <a href="{% url 'characters_edit' pk=x.characterID %}">Modificar</a>    
-                             
+
                             </tr>
                 
                         </tbody>

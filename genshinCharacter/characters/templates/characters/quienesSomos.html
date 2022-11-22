@@ -1,5 +1,5 @@
 {%extends 'characters/base.html'%}
-
+{% load static %}
 
 <body>
     {% block content %}
@@ -12,10 +12,15 @@
 
 
         <h2>Benjamin Mella</h2>
+        <img src="{% static '/media/fotos/5232d85c01cea51151221a222b5abd3a.png' %}" width="300px" alt="My image">
 
         <br>
         <br>
         <h2>Giovanni Romero</h2>
+        <img src="{% static '/media/fotos/imageGioro.png' %}" width="300px" alt="My image">
+
+        
+
         
     </div>
 

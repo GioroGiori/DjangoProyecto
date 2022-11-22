@@ -9,32 +9,48 @@
 
     
 
-    <form action="personajeAdd" method="post">
+    <form action="agregarPersonaje" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
 
                     <label for="nombre">Nombre</label><br>
-                    <input type="text" name="Personaje.nombre" class="form-control"> <br>
-
-                    <label for="edad">Edad</label><br>
-                    <input type="number" name="Personaje.edad"  class="form-control"><br>
-
-                    <label for="region" class="form-label">Region</label>
-                    <input type="text" name="Personaje.region" class="form-control"><br>
-
-                    <label for="vision" class="form-label">Visión</label>
-                    <input type="text" name="Personaje.vision" class="form-control"><br>
-
-                    <label for="afiliacion" class="form-label">Afiliación</label>
-                    <input type="text" name="Personaje.afiliacion" class="form-control"><br>
+                    <input type="text" name="nombre" class="form-control"> <br>
 
                     <label for="cumpleaños" class="form-label">Cumpleaños</label>
-                    <input type="date" name="Personaje.cumpleaños" class="form-control"><br>
+                    <input type="date" name="cumpleaños" class="form-control"><br>
+
+                    <label for="edad">Edad</label><br>
+                    <input type="number" name="edad"  class="form-control"><br>
+
+                    <label for="region" class="form-label">Region</label>
+                    <input type="text" name="region" class="form-control"><br>
+
+                    <label for="vision" class="form-label">Visión</label>
+                    <input type="text" name="vision" class="form-control"><br>
+
+                    <label for="afiliacion" class="form-label">Afiliación</label>
+                    <input type="text" name="afiliacion" class="form-control"><br>
+
 
                     <label for="constelacion" class="form-label">Constelación</label>
-                    <input type="text" name="Personaje.constelacion" class="form-control"><br>
+                    <input type="text" name="constelacion" class="form-control"><br>
+
+                    <label for="genero">Género:</label>
+                    <select name="genero">
+                        <option value="Seleccionar" disabled>Seleccionar</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <label for="foto" class="form-label">Imagen</label>
+                    <input class="form-control" type="file" name="foto">
+                    <br>
+
+
 
                     <button type="submit" class="btn btn-primary" name="opcion" value="Agregar">Agregar</button>
                     <button type="submit" class="btn btn-primary" name="opcion" value="Editar">Editar</button>
