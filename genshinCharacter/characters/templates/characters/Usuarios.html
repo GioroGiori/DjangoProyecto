@@ -1,2 +1,38 @@
 {% extends 'characters/base.html' %}
 {% load static %}
+
+
+<body>
+    {% block content %}
+
+    <h1 align="center">Usuario</h1><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-ms-4">
+                <table class="table" align="left">
+                        {%if usuario %}
+                
+                        <thead>
+                        <tr>
+                        <th scope="col">Usuario</th>  
+                        
+                        {% for x in personaje %}
+                
+
+                        <tbody>
+                            <tr>
+                                <td> {{x.foto}}</td>
+
+                                <td> <a href="{% url 'personaje_del' pk=x.id_cuenta %}">Eliminar</a>
+                                <td> <a href="{% url 'personaje_edit' pk=x.id_cuenta %}">Modificar</a>    
+                                     
+                                </tr>
+                    
+                            </tbody>
+                            {% endfor %}
+                        {% endif %}
+                        </table>
+                        <br><br>
+                        <a href="{% url 'index' %}">Volver</a>
+
+</body>
